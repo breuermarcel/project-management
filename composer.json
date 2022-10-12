@@ -1,0 +1,38 @@
+{
+    "name": "breuermarel/project-management",
+    "description": "",
+    "license": "MIT",
+    "homepage": "https://github.com/breuermarcel/project-management",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Marcel Breuer",
+            "email": "breuer.marcel@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Breuermarcel\\ProjectManagement\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Breuermarcel\\ProjectManagement\\ProjectManagementServiceProvider"
+            ],
+            "aliases": {
+                "FinanceDashboard": "Breuermarcel\\ProjectManagement\\ProjectManagementFacade"
+            }
+        }
+    }
+}
