@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("country")->nullable();
             $table->string("mobile_number")->nullable();
             $table->string("email")->nullable();
+            $table->timestamps();
         });
     }
 

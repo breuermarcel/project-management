@@ -28,8 +28,8 @@
                     <td>{{ $customer->salutation }}</td>
                     <td>{{ $customer->firstname }}</td>
                     <td>{{ $customer->lastname }}</td>
-                    <td>{{ $customer->email }}</td>
-                    <td>{{ $customer->mobile_number }}</td>
+                    <td><a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a></td>
+                    <td><a href="tel:{{ $customer->mobile_number }}">{{ $customer->mobile_number }}</a></td>
                     <td>{{ $customer->company_name }}</td>
                     <td>{{ $customer->street }}</td>
                     <td>{{ $customer->location }}</td>

@@ -4,6 +4,7 @@ namespace Breuermarcel\ProjectManagement\Http\Controllers;
 
 use Breuermarcel\ProjectManagement\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
@@ -22,20 +23,20 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'salutation' => 'max:255',
-            'firstname' => 'max:255',
-            'lastname' => 'max:255',
-            'company_name' => 'max:255',
-            'tax_number' => 'max:255',
-            'street' => 'max:255',
-            'location' => 'max:255',
-            'country' => 'max:255',
-            'mobile_number' => 'max:255',
-            'email' => 'max:255'
+            "salutation" => "integer|between:1,2",
+            "firstname" => "max:255",
+            "lastname" => "max:255",
+            "company_name" => "max:255",
+            "tax_number" => "max:255",
+            "street" => "max:255",
+            "location" => "max:255",
+            "country" => "max:255",
+            "mobile_number" => "max:255",
+            "email" => "required|max:255|unique:bm_customers"
         ]);
 
         if ($validator->fails()) {
-            return redirect(route("customer.create"))
+            return redirect(route("customers.create"))
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -43,5 +44,7 @@ class CustomerController extends Controller
         $validated = $validator->validated();
 
         Customer::create($validated);
+
+        return redirect(route("customers.index"))->withSuccess(trans("Customer created."));
     }
 }

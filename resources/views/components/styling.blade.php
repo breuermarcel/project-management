@@ -3,12 +3,7 @@
 
 <style>
     body {
-        font-size: 16px;
         font-family: 'Noto Sans JP', sans-serif;
-    }
-
-    .cursor {
-        cursor: pointer;
     }
 
     .sidebar {
@@ -17,17 +12,18 @@
         bottom: 0;
         left: 0;
         z-index: 100;
-        padding: 48px 0 0;
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        padding: 3rem 0 0;
+        box-shadow: inset -1px 0 0 var(--bs-gray-400);
     }
 
-    .sidebar.active {
-        color: #007bff;
+    @media all and (max-width: 768px) {
+        .sidebar {
+            top: 5rem;
+        }
     }
 
     .sidebar .nav-link {
-        font-weight: 500;
-        color: #333;
+        color: var(--bs-dark);
     }
 
     .sidebar .sidebar-heading {
@@ -39,8 +35,8 @@
         padding-top: .75rem;
         padding-bottom: .75rem;
         font-size: 1rem;
-        background-color: rgba(0, 0, 0, .25);
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+        background-color: var(--bs-dark);
+        box-shadow: inset -1px 0 0 var(--bs-dark);
     }
 
     .navbar .navbar-toggler {
@@ -55,47 +51,36 @@
     }
 
     .navbar .form-control-dark {
-        color: #fff;
-        background-color: rgba(255, 255, 255, .1);
-        border-color: rgba(255, 255, 255, .1);
+        color: var(--bs-light);
+        background-color: var(--bs-gray-dark);
+        border-color: var(--bs-gray-dark);
     }
 
     .navbar .form-control-dark:focus {
-        border-color: transparent;
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+        box-shadow: initial;
     }
 
-    .breadcrumb-nav .breadcrumb .breadcrumb-item:first-of-type {
-        font-weight: bold;
+    h1, .h1 {
+        position: relative;
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
     }
 
-    .breadcrumb-nav .breadcrumb .breadcrumb-item a {
-        color: #333;
-        text-decoration: none;
+    h1::after, .h1::after {
+        content: '';
+        position: absolute;
+        bottom: -.5rem;
+        left: 0;
+        height: .125rem;
+        width: 2.5rem;
+        background-color: var(--bs-gray-dark);
     }
 
-    .breadcrumb-nav .breadcrumb .breadcrumb-item.active a {
-        color: rgba(51, 51, 51, 0.8);
+    h2, .h2 {
+        font-size: 1.5rem;
     }
 
-    .stretched-link, .stretched-link:hover {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    @media (min-width: 1200px) {
-        .mw-75 {
-            max-width: 75%;
-        }
-
-        .mw-50 {
-            max-width: 50%;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .sidebar {
-            top: 5rem;
-        }
+    h3, .h3, h4, .h4 {
+        font-size: 1.25rem;
     }
 </style>

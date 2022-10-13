@@ -14,6 +14,7 @@ Route::prefix("profile")->group(function () {
 Route::prefix("customers")->group(function () {
     Route::get("/", [CustomerController::class, "index"])->name("customers.index");
     Route::get("/create", [CustomerController::class, "create"])->name("customers.create");
+    Route::post("/store", [CustomerController::class, "store"])->name("customers.store");
 });
 
 Route::prefix("projects")->group(function () {

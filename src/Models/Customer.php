@@ -33,4 +33,13 @@ class Customer extends Model
         "mobile_number",
         "email"
     ];
+
+    public function getSalutationAttribute($value)
+    {
+        return match ($value) {
+            '1' => trans("Mr."),
+            '2' => trans("Mrs."),
+            default => "",
+        };
+    }
 }
