@@ -8,6 +8,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customers.index') }}">{{ trans('Customers') }}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('projects.index') }}">{{ trans('Projects') }}</a>
+            </li>
         </ul>
 
         <h6 class="sidebar-heading px-3 text-muted">{{ trans('Settings') }}</h6>
