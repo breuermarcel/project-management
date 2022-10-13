@@ -4,6 +4,35 @@
 <style>
     body {
         font-family: 'Noto Sans JP', sans-serif;
+        color: var(--bs-dark);
+    }
+
+    h1, .h1 {
+        position: relative;
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+    }
+
+    h1::after, .h1::after {
+        content: '';
+        position: absolute;
+        bottom: -.5rem;
+        left: 0;
+        height: .125rem;
+        width: 2.5rem;
+        background-color: var(--bs-gray-dark);
+    }
+
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+
+    h3, .h3, h4, .h4 {
+        font-size: 1.25rem;
+    }
+
+    a, a:hover {
+        color: var(--bs-dark);
     }
 
     .sidebar {
@@ -58,29 +87,5 @@
 
     .navbar .form-control-dark:focus {
         box-shadow: initial;
-    }
-
-    h1, .h1 {
-        position: relative;
-        margin-bottom: 1.5rem;
-        font-size: 1.75rem;
-    }
-
-    h1::after, .h1::after {
-        content: '';
-        position: absolute;
-        bottom: -.5rem;
-        left: 0;
-        height: .125rem;
-        width: 2.5rem;
-        background-color: var(--bs-gray-dark);
-    }
-
-    h2, .h2 {
-        font-size: 1.5rem;
-    }
-
-    h3, .h3, h4, .h4 {
-        font-size: 1.25rem;
     }
 </style>
