@@ -15,6 +15,9 @@ Route::prefix("customers")->group(function () {
     Route::get("/", [CustomerController::class, "index"])->name("customers.index");
     Route::get("/create", [CustomerController::class, "create"])->name("customers.create");
     Route::post("/store", [CustomerController::class, "store"])->name("customers.store");
+    Route::get("/{customer}/edit", [CustomerController::class, "edit"])->name("customers.edit");
+    Route::patch("/{customer}/update", [CustomerController::class, "update"])->name("customers.update");
+    Route::delete("/{customer}/destroy", [CustomerController::class, "destroy"])->name("customers.destroy");
 });
 
 Route::prefix("projects")->group(function () {

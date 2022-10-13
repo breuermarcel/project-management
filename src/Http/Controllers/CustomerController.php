@@ -3,6 +3,7 @@
 namespace Breuermarcel\ProjectManagement\Http\Controllers;
 
 use Breuermarcel\ProjectManagement\Models\Customer;
+use Cassandra\Custom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,9 +37,7 @@ class CustomerController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route("customers.create"))
-                ->withErrors($validator)
-                ->withInput();
+            return redirect(route("customers.create"))->withErrors($validator)->withInput();
         }
 
         $validated = $validator->validated();
@@ -46,5 +45,43 @@ class CustomerController extends Controller
         Customer::create($validated);
 
         return redirect(route("customers.index"))->withSuccess(trans("Customer created."));
+    }
+
+    public function edit(Customer $customer)
+    {
+        return view("project-management::customer.edit", compact("customer"));
+    }
+
+    public function update(Customer $customer, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "salutation" => "integer|between:1,2",
+            "firstname" => "max:255",
+            "lastname" => "max:255",
+            "company_name" => "max:255",
+            "tax_number" => "max:255",
+            "street" => "max:255",
+            "location" => "max:255",
+            "country" => "max:255",
+            "mobile_number" => "max:255",
+            "email" => "required|max:255|unique:bm_customers,email," . $customer->id
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route("customers.edit", $customer))->withErrors($validator);
+        }
+
+        $validated = $validator->validated();
+
+        $customer->update($validated);
+
+        return redirect(route("customers.index"))->withSuccess(trans("Customer updated."));
+    }
+
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+
+        return redirect(route("customers.index"))->withSuccess(trans("Customer deleted."));
     }
 }

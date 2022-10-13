@@ -28,7 +28,7 @@
                         <th scope="col">{{ trans("Location") }}</th>
                         <th scope="col">{{ trans("Country") }}</th>
                         <th scope="col">{{ trans("Tax Number") }}</th>
-                        <th scope="col" class="visually-hidden">{{ trans("tools") }}</th>
+                        <th scope="col"><span class="visually-hidden">{{ trans("Tools") }}</span></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,6 +46,17 @@
                             <td>{{ $customer->location }}</td>
                             <td>{{ $customer->country }}</td>
                             <td>{{ $customer->tax_number }}</td>
+                            <td>
+                                <a href="{{ route("customers.edit", $customer) }}" target="_self" class="btn btn-dark">
+                                    {{ trans("Edit") }}
+                                </a>
+                                <form class="d-inline" action="{{ route("customers.destroy", $customer) }}" method="POST">
+                                    @method("DELETE")
+                                    @csrf
+
+                                    <button class="btn btn-dark" type="submit">{{ trans("Delete") }}</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
 
