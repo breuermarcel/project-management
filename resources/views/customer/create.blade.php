@@ -140,7 +140,7 @@
         <div class="col-md-4">
             <div class="form-floating">
                 <input type="text" placeholder="{{ trans('Location') }}"
-                       class="form-control @error('street') is-invalid @enderror" id="location" name="location"
+                       class="form-control @error('location') is-invalid @enderror" id="location" name="location"
                        value="{{ old("location") }}">
                 <label for="location">{{ trans("Location") }}</label>
 
@@ -155,7 +155,7 @@
         <div class="col-md-4">
             <div class="form-floating">
                 <input type="text" placeholder="{{ trans('Country') }}"
-                       class="form-control @error('street') is-invalid @enderror" id="country" name="country"
+                       class="form-control @error('country') is-invalid @enderror" id="country" name="country"
                        value="{{ old("country") }}">
                 <label for="country">{{ trans("Country") }}</label>
 
