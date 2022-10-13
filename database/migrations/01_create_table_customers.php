@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create("bm_customers", function (Blueprint $table) {
             $table->id();
-            $table->string("salutation")->nullable();
+            $table->integer("salutation")->nullable();
             $table->string("firstname")->nullable();
             $table->string("lastname")->nullable();
             $table->string("company_name")->nullable();
