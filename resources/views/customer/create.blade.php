@@ -1,7 +1,7 @@
 @extends('project-management::main')
 
 @section("heading")
-    <h1>{{ trans("Customer") }}</h1>
+    <h1>{{ trans("Create Customer") }}</h1>
 
     <a href="{{ route("customers.index") }}" target="_self" class="btn btn-dark ms-auto">{{ trans("List") }}</a>
 @endsection
