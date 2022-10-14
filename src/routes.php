@@ -3,6 +3,7 @@
 use Breuermarcel\ProjectManagement\Http\Controllers\CustomerController;
 use Breuermarcel\ProjectManagement\Http\Controllers\DashboardController;
 use Breuermarcel\ProjectManagement\Http\Controllers\ProjectController;
+use Breuermarcel\ProjectManagement\Http\Controllers\TaskController;
 
 Route::get("search", [SearchController::class, "index"])->name("search");
 
@@ -30,15 +31,17 @@ Route::prefix("projects")->group(function () {
     Route::patch("/{project}/update", [ProjectController::class, "update"])->name("projects.update");
     Route::delete("/{project}/destroy", [ProjectController::class, "destroy"])->name("projects.destroy");
 
-    Route::prefix("tasks")->group(function () {
+    Route::prefix("{project}/tasks")->group(function () {
+        Route::get("/create", [TaskController::class, "create"])->name("tasks.create");
+    });
+
+
+
+    Route::prefix("{project}/offers")->group(function () {
 
     });
 
-    Route::prefix("offers")->group(function () {
-
-    });
-
-    Route::prefix("invoices")->group(function () {
+    Route::prefix("{project}/invoices")->group(function () {
 
     });
 });

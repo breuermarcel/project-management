@@ -23,6 +23,8 @@ class ProjectController extends Controller
         if ($customers->count() <= 0)
             return redirect(route("customers.create"))->withErrors(trans("Please create customer first."));
 
+        // todo upload files
+
         return view("project-management::projects.create", compact("customers"));
     }
 
@@ -76,7 +78,8 @@ class ProjectController extends Controller
         return redirect(route("projects.show", $project))->withSuccess(trans("Project updated."));
     }
 
-    public function destroy(Project $project) {
+    public function destroy(Project $project)
+    {
         $project->delete();
 
         return redirect(route("projects.index"))->withSuccess(trans("Project deleted."));

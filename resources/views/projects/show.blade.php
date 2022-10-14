@@ -7,6 +7,7 @@
     <div class="btn-group ms-auto">
         <a href="{{ route("projects.index") }}" target="_self" class="btn btn-dark">{{ trans("List") }}</a>
         <a href="{{ route("projects.edit", $project) }}" target="_self" class="btn btn-dark">{{ trans("Edit") }}</a>
+        <a href="{{ route("tasks.create", $project) }}" target="_self" class="btn btn-dark">{{ trans("Add Task") }}</a>
     </div>
 @endsection
 
