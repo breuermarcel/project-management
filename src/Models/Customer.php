@@ -42,4 +42,9 @@ class Customer extends Model
             default => "",
         };
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

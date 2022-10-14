@@ -19,15 +19,20 @@
 <div class="container-fluid">
     <div class="row">
         @include('project-management::components.sidebar')
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-sm-3 my-2" id="bm__main">
-            <div id="bm__searchResultsContainer"></div>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-sm-3 my-2 position-relative" id="bm__main">
+            <div class="d-flex align-items-center" id="bm__toolbar">
+                @yield("heading")
+            </div>
+
+            <hr />
 
             @include("project-management::components.status")
-
-            @yield('content')
+            @yield("content")
         </main>
     </div>
 </div>
+
+<div id="bm__searchResultsContainer"></div>
 
 </body>
 </html>

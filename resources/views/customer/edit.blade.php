@@ -1,8 +1,15 @@
 @extends('project-management::main')
 
-@section('content')
+@section("heading")
     <h1>{{ trans("Customer") }}</h1>
 
+    <div class="btn-group ms-auto">
+        <a href="{{ route("customers.index") }}" target="_self" class="btn btn-dark ms-auto">{{ trans("List") }}</a>
+        <a href="{{ route("customers.create") }}" target="_self" class="btn btn-dark">{{ trans("Create") }}</a>
+    </div>
+@endsection
+
+@section('content')
     <form class="row g-2" method="POST" action="{{ route("customers.update", $customer) }}">
         @method("PATCH")
         @csrf
@@ -174,7 +181,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-dark">{{ trans("Edit") }}</button>
+            <button type="submit" class="btn btn-dark">{{ trans("Update") }}</button>
         </div>
     </form>
 

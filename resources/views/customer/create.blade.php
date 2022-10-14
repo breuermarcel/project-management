@@ -1,8 +1,12 @@
 @extends('project-management::main')
 
-@section('content')
+@section("heading")
     <h1>{{ trans("Customer") }}</h1>
 
+    <a href="{{ route("customers.index") }}" target="_self" class="btn btn-dark ms-auto">{{ trans("List") }}</a>
+@endsection
+
+@section('content')
     <form class="row g-2" method="POST" action="{{ route("customers.store") }}">
         @method("POST")
         @csrf
@@ -56,7 +60,7 @@
 
         <div class="col-md-6">
             <div class="form-floating">
-                <input type="text" placeholder="{{ trans('Mobile Number') }}"
+                <input type="tel" placeholder="{{ trans('Mobile Number') }}"
                        class="form-control @error('mobile_number') is-invalid @enderror" id="mobile_number"
                        name="mobile_number" value="{{ old("mobile_number") }}">
                 <label for="mobile_number">{{ trans("Mobile Number") }}</label>

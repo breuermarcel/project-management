@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create("bm_projects", function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->longText("description");
+            $table->longText("description")->nullable();
+            $table->unsignedBigInteger("customer_id");
+            $table->foreign("customer_id")->references("id")->on("bm_customers");
             $table->timestamps();
         });
     }

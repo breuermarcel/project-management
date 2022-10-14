@@ -5,19 +5,20 @@
 
     <div class="btn-group ms-auto">
         <a href="{{ route("projects.index") }}" target="_self" class="btn btn-dark">{{ trans("List") }}</a>
+        <a href="{{ route("projects.create") }}" target="_self" class="btn btn-dark">{{ trans("Create") }}</a>
     </div>
 @endsection
 
 @section('content')
-    <form class="row g-2" method="POST" action="{{ route("projects.store") }}">
-        @method("POST")
+    <form class="row g-2" method="POST" action="{{ route("projects.update", $project) }}">
+        @method("PATCH")
         @csrf
 
         <div class="col-md-6">
             <div class="form-floating">
                 <input type="text" placeholder="{{ trans('Name') }}"
                        class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                       value="{{ old("name") }}" required>
+                       value="{{ $project->name }}" required>
                 <label for="name">{{ trans("Name") }}</label>
 
                 @error("name")
@@ -32,10 +33,12 @@
             <div class="form-floating">
                 <select class="form-select @error('customer_id') is-invalid @enderror" id="customer_id"
                         name="customer_id">
-                    <option selected disabled>{{ trans("Choose...") }}</option>
+                    <option disabled>{{ trans("Choose...") }}</option>
 
                     @foreach($customers as $customer)
-                        <option value="{{ $customer->id }}">{{ $customer->lastname }} ({{ $customer->company_name }})
+                        <option
+                            value="{{ $customer->id }}" {{ $project->customer->id == $customer->id ? "selected" : "" }}>
+                            {{ $customer->lastname }} ({{ $customer->company_name }})
                         </option>
                     @endforeach
                 </select>
@@ -53,7 +56,7 @@
             <div class="form-floating">
                 <textarea type="text" placeholder="{{ trans('Description') }}"
                           class="form-control @error('description') is-invalid @enderror" id="description"
-                          name="description" style="height: 250px">{{ old("description") }}</textarea>
+                          name="description" style="height: 250px">{{ $project->description }}</textarea>
                 <label for="description">{{ trans("Description") }}</label>
 
                 @error("description")
@@ -65,7 +68,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-dark text-end">{{ trans("Create") }}</button>
+            <button type="submit" class="btn btn-dark">{{ trans("Update") }}</button>
         </div>
     </form>
 @endsection

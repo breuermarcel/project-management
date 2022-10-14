@@ -7,7 +7,14 @@
 
 @if(session("error"))
     <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-        <strong>Fehler: </strong>{{ session("error") }}
+        <strong>{{ trans("Error") }}: </strong>{{ session("error") }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+
+@foreach ($errors->all() as $error)
+    <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+        <strong>{{ trans("Error") }}: </strong>{{ $error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endforeach

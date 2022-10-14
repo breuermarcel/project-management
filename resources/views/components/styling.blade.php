@@ -9,7 +9,7 @@
 
     h1, .h1 {
         position: relative;
-        margin-bottom: 1.5rem;
+        margin-bottom: .5rem;
         font-size: 1.75rem;
     }
 
@@ -33,6 +33,10 @@
 
     a, a:hover {
         color: var(--bs-dark);
+    }
+
+    .z-index-100 {
+        z-index: 100;
     }
 
     .sidebar {
@@ -87,5 +91,9 @@
 
     .navbar .form-control-dark:focus {
         box-shadow: initial;
+    }
+
+    #bm__toolbar {
+        right: 1.5rem;
     }
 </style>
