@@ -26,7 +26,7 @@ return new class extends Migration {
             $table->unsignedBigInteger("created_user_id");
             $table->foreign("created_user_id")->references("id")->on("users");
 
-            $table->unsignedBigInteger("signed_user_id");
+            $table->unsignedBigInteger("signed_user_id")->nullable();
             $table->foreign("signed_user_id")->references("id")->on("users");
 
             $table->timestamps();

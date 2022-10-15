@@ -15,4 +15,10 @@
     <div id="bm__project_description">
         {{ $project->description }}
     </div>
+
+    <div id="bm__project_tasks">
+        @foreach($project->tasks as $task)
+            <p>{{ $task->name }} {{ $task["status"] }}</p>
+        @endforeach
+    </div>
 @endsection

@@ -24,15 +24,15 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "salutation" => "integer|between:1,2",
-            "firstname" => "max:255",
-            "lastname" => "max:255",
-            "company_name" => "max:255",
-            "tax_number" => "max:255",
-            "street" => "max:255",
-            "location" => "max:255",
-            "country" => "max:255",
-            "mobile_number" => "max:255",
+            "salutation" => "nullable|integer|between:1,2",
+            "firstname" => "nullable|max:255",
+            "lastname" => "nullable|max:255",
+            "company_name" => "required|max:255",
+            "tax_number" => "nullable|max:255",
+            "street" => "nullable|max:255",
+            "location" => "nullable|max:255",
+            "country" => "nullable|max:255",
+            "mobile_number" => "nullable|max:255",
             "email" => "required|max:255|unique:bm_customers"
         ]);
 
@@ -55,15 +55,15 @@ class CustomerController extends Controller
     public function update(Customer $customer, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "salutation" => "integer|between:1,2",
-            "firstname" => "max:255",
-            "lastname" => "max:255",
-            "company_name" => "max:255",
-            "tax_number" => "max:255",
-            "street" => "max:255",
-            "location" => "max:255",
-            "country" => "max:255",
-            "mobile_number" => "max:255",
+            "salutation" => "nullable|integer|between:1,2",
+            "firstname" => "nullable|max:255",
+            "lastname" => "nullable|max:255",
+            "company_name" => "required|max:255",
+            "tax_number" => "nullable|max:255",
+            "street" => "nullable|max:255",
+            "location" => "nullable|max:255",
+            "country" => "nullable|max:255",
+            "mobile_number" => "nullable|max:255",
             "email" => "required|max:255|unique:bm_customers,email," . $customer->id
         ]);
 

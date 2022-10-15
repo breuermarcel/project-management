@@ -96,7 +96,7 @@
             <div class="form-floating">
                 <input type="text" placeholder="{{ trans('Company') }}"
                        class="form-control @error('company_name') is-invalid @enderror" id="company_name"
-                       name="company_name" value="{{ old("company_name") }}">
+                       name="company_name" value="{{ old("company_name") }}" required>
                 <label for="company_name">{{ trans("Company") }}</label>
 
                 @error("company_name")

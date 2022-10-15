@@ -33,7 +33,7 @@ class ProjectController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => "required|string|max:255|unique:bm_projects",
             "customer_id" => "required|integer|exists:bm_customers,id",
-            "description" => "string|max:500"
+            "description" => "nullable|string|max:500"
         ]);
 
         if ($validator->fails()) {
@@ -64,7 +64,7 @@ class ProjectController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => "required|string|max:255|unique:bm_projects,name," . $project->id,
             "customer_id" => "required|integer|exists:bm_customers,id",
-            "description" => "string|max:500"
+            "description" => "nullable|string|max:500"
         ]);
 
         if ($validator->fails()) {

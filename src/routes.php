@@ -33,6 +33,7 @@ Route::prefix("projects")->group(function () {
 
     Route::prefix("{project}/tasks")->group(function () {
         Route::get("/create", [TaskController::class, "create"])->name("tasks.create");
+        Route::post("/store", [TaskController::class, "store"])->name("tasks.store");
     });
 
 
