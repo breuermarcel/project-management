@@ -16,7 +16,7 @@
         <h6 class="sidebar-heading px-3 text-muted">{{ trans('Settings') }}</h6>
         <ul class="nav flex-column mb-5">
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ trans('Profile') }}</a>
+                <a class="nav-link" href="#">{{ trans('Status') }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">{{ trans('Logout') }}</a>
