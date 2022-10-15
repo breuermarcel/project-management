@@ -69,6 +69,10 @@ php artisan migrate
 - [ ] add translations
 - [ ] start time tracking
 - [ ] end time tracking
-- [ ] show open time trackings
+- [ ] show open time tracking
 - [ ] create offer
 - [ ] export offer as .pdf
+- [ ] search for customers, projects, tasks
+- [ ] pagination for projects
+- [ ] pagination for customers
+- [ ] pagination for tasks
