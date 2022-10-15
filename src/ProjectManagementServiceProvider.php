@@ -12,9 +12,6 @@ class ProjectManagementServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
         $this->loadTranslationsFrom(__DIR__ . "/../resources/lang", "project-management");
         $this->loadViewsFrom(__DIR__ . "/../resources/views", "project-management");
         $this->loadMigrationsFrom(__DIR__ . "/../database/migrations");
@@ -26,12 +23,10 @@ class ProjectManagementServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . "/../config/config.php", "project-management");
+        $this->mergeConfigFrom(__DIR__ . "/../config/project-management.php", "project-management");
 
-        // Register the main class to use with the facade
         $this->app->singleton("project-management", function () {
-            return new ProjectManagement;
+            return new ProjectManagement();
         });
     }
 

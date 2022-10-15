@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": "^8.0.2",
+        "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/ui": "^4.0"
     },
@@ -33,7 +34,7 @@
                 "Breuermarcel\\ProjectManagement\\ProjectManagementServiceProvider"
             ],
             "aliases": {
-                "FinanceDashboard": "Breuermarcel\\ProjectManagement\\ProjectManagementFacade"
+                "ProjectManagement": "Breuermarcel\\ProjectManagement\\ProjectManagementFacade"
             }
         }
     }

@@ -9,11 +9,6 @@ class Customer extends Model
 {
     use HasFactory;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = "bm_customers";
 
     /**
@@ -46,5 +41,14 @@ class Customer extends Model
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    /**
+     * @param string $name
+     * @return string
+     */
+    private function getTableName(string $name): string
+    {
+        return config("project-management.tables." . $name);
     }
 }
