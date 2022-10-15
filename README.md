@@ -58,3 +58,17 @@ php artisan migrate
 ---
 
 ## Data Structure
+
+---
+
+## ToDo's
+
+- [ ] custom validation message for digits and numbers
+- [ ] make status customisable
+- [ ] upload files to projects
+- [ ] add translations
+- [ ] start time tracking
+- [ ] end time tracking
+- [ ] show open time trackings
+- [ ] create offer
+- [ ] export offer as .pdf
