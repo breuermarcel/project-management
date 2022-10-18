@@ -28,13 +28,15 @@ class Task extends Model
         "signed_user_id"
     ];
 
-    public $status = [
+    public array $status = [
         "planned",
         "in progress",
         "on hold",
         "completed",
         "rejected"
     ];
+
+    // todo cast date
 
     public function project()
     {
@@ -49,5 +51,10 @@ class Task extends Model
     public function signedTo()
     {
         return $this->belongsTo(User::class, "signed_user_id");
+    }
+
+    public function readableStatus(int $key = 0): string
+    {
+        return $this->status[$key];
     }
 }

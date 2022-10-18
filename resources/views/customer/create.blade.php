@@ -15,8 +15,9 @@
             <div class="form-floating">
                 <select class="form-select @error('salutation') is-invalid @enderror" id="salutation" name="salutation">
                     <option selected disabled>{{ trans("Choose...") }}</option>
-                    <option value="1">{{ trans("Mr.") }}</option>
-                    <option value="2">{{ trans("Mrs.") }}</option>
+                    @foreach($customer->salutations as $key => $salutation)
+                        <option value="{{ $key }}">{{ trans($salutation) }}</option>
+                    @endforeach
                 </select>
                 <label for="salutation">{{ trans("Salutation") }}</label>
 

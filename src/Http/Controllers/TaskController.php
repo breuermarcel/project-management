@@ -26,8 +26,8 @@ class TaskController extends Controller
             "name" => "required|string|max:255",
             "description" => "nullable|string|max:500",
             "status" => "required|integer|between:0,5",
-            "deadline" => "nullable|time",
-            "expenditure" => "nullable|digits_between:0,5",
+            "deadline" => "nullable|date",
+            "expenditure" => "nullable|digits_between:0,250",
             "signed_user_id" => "nullable|integer|exists:users,id",
         ]);
 
@@ -44,5 +44,10 @@ class TaskController extends Controller
         $project = Project::findOrFail($validated["project_id"]);
 
         return redirect(route("projects.show", $project))->withSuccess(trans("Task created."));
+    }
+
+    public function edit()
+    {
+
     }
 }

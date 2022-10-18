@@ -17,8 +17,55 @@
     </div>
 
     <div id="bm__project_tasks">
-        @foreach($project->tasks as $task)
-            <p>{{ $task->name }} {{ $task["status"] }}</p>
-        @endforeach
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ trans("Name") }}</th>
+                    <th scope="col">{{ trans("Description") }}</th>
+                    <th scope="col">{{ trans("Status") }}</th>
+                    <th scope="col">{{ trans("Deadline") }}</th>
+                    <th scope="col">{{ trans("Expenditure") }}</th>
+                    <th scope="col">{{ trans("Signed to") }}</th>
+                    <th scope="col">{{ trans("Created by") }}</th>
+                    <th scope="col"><span class="visually-hidden">{{ trans("Tools") }}</span></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach($project->tasks as $task)
+                    <tr>
+                        <th scope="row">{{ $task->id }}</th>
+                        <td>{{ $task->name }}</td>
+                        <td>{{ $task->description }}</td>
+                        <td>
+                            {{ ucwords(trans($task->readableStatus($task["status"]))) }}
+                        </td>
+                        <td>{{ $task->deadline }}</td>
+                        <td>{{ $task->expenditure }}</td>
+                        <td>
+                            {{ $task->signedTo !== null ? $task->signedTo->name : "-" }}
+                        </td>
+                        <td>{{ $task->createdFrom->name }}</td>
+                        <td>
+                            {{--
+                            <a href="{{ route("tasks.edit", $project, $project->task) }}" target="_self" class="btn btn-dark">
+                                {{ trans("Edit") }}
+                            </a>
+                            <form class="d-inline" action="{{ route("tasks.destroy", $task) }}" method="POST">
+                                @method("DELETE")
+                                @csrf
+
+                                <button class="btn btn-dark" type="submit">{{ trans("Delete") }}</button>
+                            </form>
+                            --}}
+                        </td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

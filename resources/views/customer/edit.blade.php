@@ -17,11 +17,12 @@
         <div class="col-md-2">
             <div class="form-floating">
                 <select class="form-select @error('salutation') is-invalid @enderror" id="salutation" name="salutation">
-                    <option disabled>{{ trans("Choose...") }}</option>
-                    <option
-                        value="1" {{ $customer->salutation == trans("Mr.") ? "selected" : "" }}>{{ trans("Mr.") }}</option>
-                    <option
-                        value="2" {{ $customer->salutation == trans("Mrs.") ? "selected":  "" }}>{{ trans("Mrs.") }}</option>
+                    <option {{ $customer->salutation ? "disabled" : "" }}>{{ trans("Choose...") }}</option>
+
+                    @foreach($customer->salutations as $key => $salutation)
+                        <option
+                            value="{{ $key }}" {{ $customer->salutation === $key ? "selected" : "" }}>{{ trans($customer->readableSalutation($key)) }}</option>
+                    @endforeach
                 </select>
                 <label for="salutation">{{ trans("Salutation") }}</label>
 

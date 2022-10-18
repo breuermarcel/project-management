@@ -18,13 +18,15 @@ class CustomerController extends Controller
 
     public function create()
     {
-        return view("project-management::customer.create");
+        $customer = Customer::first();
+
+        return view("project-management::customer.create", compact("customer"));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "salutation" => "nullable|integer|between:1,2",
+            "salutation" => "nullable|integer|between:0,2",
             "firstname" => "nullable|max:255",
             "lastname" => "nullable|max:255",
             "company_name" => "required|max:255",
@@ -55,7 +57,7 @@ class CustomerController extends Controller
     public function update(Customer $customer, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "salutation" => "nullable|integer|between:1,2",
+            "salutation" => "nullable|integer|between:0,2",
             "firstname" => "nullable|max:255",
             "lastname" => "nullable|max:255",
             "company_name" => "required|max:255",

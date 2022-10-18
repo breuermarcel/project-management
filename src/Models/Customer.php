@@ -29,13 +29,15 @@ class Customer extends Model
         "email"
     ];
 
-    public function getSalutationAttribute($value)
+    public array $salutations = [
+        "Mr.",
+        "Ms.",
+        "Mrs."
+    ];
+
+    public function readableSalutation(int $value = null): string
     {
-        return match ($value) {
-            1 => trans("Mr."),
-            2 => trans("Mrs."),
-            default => "",
-        };
+        return $value !== null ? $this->salutations[$value] : "";
     }
 
     public function projects()

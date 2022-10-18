@@ -4,7 +4,8 @@
     <h1>{{ trans("Create Task") }}</h1>
 
     <div class="ms-auto btn-group">
-        <a href="#" target="_self" class="btn btn-dark">{{ trans("List") }}</a>
+        <a href="{{ route("projects.show", $project) }}" target="_self"
+           class="btn btn-dark">{{ trans("Show Project") }}</a>
     </div>
 @endsection
 
@@ -31,12 +32,11 @@
         <div class="col-md-6">
             <div class="form-floating">
                 <select class="form-select @error('status') is-invalid @enderror" id="status"
-                        name="status" required>
+                        name="status">
                     <option selected disabled>{{ trans("Choose...") }}</option>
                     @foreach($statuses as $id => $status)
                         <option value="{{ $id }}">{{ ucwords(trans($status)) }}</option>
                     @endforeach
-
                 </select>
                 <label for="status">{{ trans("Status") }}</label>
 
@@ -48,12 +48,28 @@
             </div>
         </div>
 
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea type="text" placeholder="{{ trans('Description') }}"
+                          class="form-control @error('description') is-invalid @enderror" id="description"
+                          name="description" style="height: 250px">{{ old("description") }}</textarea>
+                <label for="description">{{ trans("Description") }}</label>
+
+                @error("description")
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+        </div>
+
         <div class="col-md-6">
             <div class="form-floating">
-                <input type="text" placeholder="{{ trans('Expenditure') }}"
-                       class="form-control @error('expenditure') is-invalid @enderror" id="expenditure" name="expenditure"
+                <input type="text" placeholder="{{ trans('Expenditure (hours)') }}"
+                       class="form-control @error('expenditure') is-invalid @enderror" id="expenditure"
+                       name="expenditure"
                        value="{{ old("expenditure") }}">
-                <label for="expenditure">{{ trans("Expenditure") }}</label>
+                <label for="expenditure">{{ trans("Expenditure (hours)") }}</label>
 
                 @error("expenditure")
                 <div class="invalid-feedback">

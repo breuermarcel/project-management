@@ -29,7 +29,7 @@
             @foreach($customers as $customer)
                 <tr>
                     <th scope="row">{{ $customer->id }}</th>
-                    <td>{{ $customer->salutation }}</td>
+                    <td>{{ trans($customer->readableSalutation($customer["salutation"])) }}</td>
                     <td>{{ $customer->firstname }}</td>
                     <td>{{ $customer->lastname }}</td>
                     <td><a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a></td>
