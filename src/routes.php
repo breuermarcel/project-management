@@ -35,7 +35,7 @@ Route::prefix("projects")->group(function () {
         Route::get("/create", [TaskController::class, "create"])->name("tasks.create");
         Route::post("/store", [TaskController::class, "store"])->name("tasks.store");
         Route::get("{task}/edit", [TaskController::class, "edit"])->name("tasks.edit");
-        Route::patch("{task}/update", [TaskController::class, "edit"])->name("tasks.update");
+        Route::patch("{task}/update", [TaskController::class, "update"])->name("tasks.update");
         Route::delete("{task}/destroy", [TaskController::class, "destroy"])->name("tasks.destroy");
     });
 

@@ -42,24 +42,22 @@
                         <td>
                             {{ ucwords(trans($task->readableStatus($task["status"]))) }}
                         </td>
-                        <td>{{ $task->deadline }}</td>
+                        <td>{{ $task->deadline !== null ? $task->deadline->format("d.m.Y") : "-" }}</td>
                         <td>{{ $task->expenditure }}</td>
                         <td>
                             {{ $task->signedTo !== null ? $task->signedTo->name : "-" }}
                         </td>
                         <td>{{ $task->createdFrom->name }}</td>
                         <td>
-                            {{--
-                            <a href="{{ route("tasks.edit", $project, $project->task) }}" target="_self" class="btn btn-dark">
+                            <a href="{{ route("tasks.edit", [$project, $task]) }}" target="_self" class="btn btn-dark">
                                 {{ trans("Edit") }}
                             </a>
-                            <form class="d-inline" action="{{ route("tasks.destroy", $task) }}" method="POST">
+                            <form class="d-inline" action="{{ route("tasks.destroy", [$project, $task]) }}" method="POST">
                                 @method("DELETE")
                                 @csrf
 
                                 <button class="btn btn-dark" type="submit">{{ trans("Delete") }}</button>
                             </form>
-                            --}}
                         </td>
                     </tr>
                 @endforeach

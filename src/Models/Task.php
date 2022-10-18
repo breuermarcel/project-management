@@ -3,6 +3,7 @@
 namespace Breuermarcel\ProjectManagement\Models;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +29,7 @@ class Task extends Model
         "signed_user_id"
     ];
 
-    public array $status = [
+    public array $statuses = [
         "planned",
         "in progress",
         "on hold",
@@ -36,7 +37,11 @@ class Task extends Model
         "rejected"
     ];
 
-    // todo cast date
+    protected $dates = [
+        "deadline"
+    ];
+
+    protected $dateFormat = [];
 
     public function project()
     {
@@ -55,6 +60,6 @@ class Task extends Model
 
     public function readableStatus(int $key = 0): string
     {
-        return $this->status[$key];
+        return $this->statuses[$key];
     }
 }

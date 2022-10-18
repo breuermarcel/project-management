@@ -21,7 +21,7 @@
 
                     @foreach($customer->salutations as $key => $salutation)
                         <option
-                            value="{{ $key }}" {{ $customer->salutation === $key ? "selected" : "" }}>{{ trans($customer->readableSalutation($key)) }}</option>
+                            value="{{ $key }}" {{ $customer->salutation !== $key ?: "selected" }}>{{ trans($customer->readableSalutation($key)) }}</option>
                     @endforeach
                 </select>
                 <label for="salutation">{{ trans("Salutation") }}</label>

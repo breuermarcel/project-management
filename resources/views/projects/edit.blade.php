@@ -37,7 +37,7 @@
 
                     @foreach($customers as $customer)
                         <option
-                            value="{{ $customer->id }}" {{ $project->customer->id == $customer->id ? "selected" : "" }}>
+                            value="{{ $customer->id }}" {{ $project->customer->id !== $customer->id ?: "selected" }}>
                             {{ $customer->lastname }} ({{ $customer->company_name }})
                         </option>
                     @endforeach
