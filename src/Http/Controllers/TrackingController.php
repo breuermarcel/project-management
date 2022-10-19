@@ -14,7 +14,7 @@ class TrackingController extends Controller
         $data["task_id"] = $task->id;
         $data["user_id"] = auth()->user()->id;
 
-        $latestTracking = $task->trackings()->where("user_id", auth()->user()->id)->latest()->first();
+        $latestTracking = $task->latestTracking();
 
         if ($latestTracking !== null) {
             if ($latestTracking->ended_at === null) {
@@ -26,7 +26,6 @@ class TrackingController extends Controller
 
                 return redirect(route("projects.show", [$project, $task]))->withSuccess(trans("Tracking started."));
             }
-
         } else {
             // first tracking
             Tracking::create($data);

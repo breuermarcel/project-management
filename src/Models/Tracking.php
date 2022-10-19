@@ -42,6 +42,7 @@ class Tracking extends Model
 
     public static function openTrackings()
     {
+        // todo refactor to $this-> without ->get()
         return self::where("started_at", "!=", null)
             ->where("ended_at", "=", null)
             ->where("user_id", "=", auth()->user()->id)

@@ -48,7 +48,12 @@ class Task extends Model
 
     public function trackings()
     {
-        return $this->hasMany(Tracking::class);
+        return $this->hasMany(Tracking::class)->where("user_id", auth()->user()->id);
+    }
+
+    public function latestTracking()
+    {
+        return $this->hasMany(Tracking::class)->where("user_id", auth()->user()->id)->latest()->first();
     }
 
     public function createdFrom()
