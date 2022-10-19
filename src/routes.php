@@ -4,6 +4,7 @@ use Breuermarcel\ProjectManagement\Http\Controllers\CustomerController;
 use Breuermarcel\ProjectManagement\Http\Controllers\DashboardController;
 use Breuermarcel\ProjectManagement\Http\Controllers\ProjectController;
 use Breuermarcel\ProjectManagement\Http\Controllers\TaskController;
+use Breuermarcel\ProjectManagement\Http\Controllers\TrackingController;
 
 Route::get("search", [SearchController::class, "index"])->name("search");
 
@@ -37,8 +38,12 @@ Route::prefix("projects")->group(function () {
         Route::get("{task}/edit", [TaskController::class, "edit"])->name("tasks.edit");
         Route::patch("{task}/update", [TaskController::class, "update"])->name("tasks.update");
         Route::delete("{task}/destroy", [TaskController::class, "destroy"])->name("tasks.destroy");
-    });
 
+        Route::prefix("{task}/trackings")->group(function () {
+            Route::post("/start", [TrackingController::class, "start"])->name("trackings.start");
+            Route::post("/end", [TrackingController::class, "end"])->name("trackings.end");
+        });
+    });
 
 
     Route::prefix("{project}/offers")->group(function () {

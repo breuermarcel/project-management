@@ -41,11 +41,14 @@ class Task extends Model
         "deadline"
     ];
 
-    protected $dateFormat = [];
-
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function tracking()
+    {
+        return $this->hasOne(Tracking::class); // check if multiple people can track on one
     }
 
     public function createdFrom()

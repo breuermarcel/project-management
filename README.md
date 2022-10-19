@@ -69,7 +69,8 @@ php artisan migrate
 - [ ] add translations
 - [ ] start time tracking
 - [ ] end time tracking
-- [ ] show open time tracking
+- [X] show open time tracking
+- [ ] sum of current week tracking
 - [ ] create offer
 - [ ] export offer as .pdf
 - [ ] search for customers, projects, tasks

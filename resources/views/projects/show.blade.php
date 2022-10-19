@@ -52,12 +52,27 @@
                             <a href="{{ route("tasks.edit", [$project, $task]) }}" target="_self" class="btn btn-dark">
                                 {{ trans("Edit") }}
                             </a>
-                            <form class="d-inline" action="{{ route("tasks.destroy", [$project, $task]) }}" method="POST">
+                            <form class="d-inline" action="{{ route("tasks.destroy", [$project, $task]) }}"
+                                  method="POST">
                                 @method("DELETE")
                                 @csrf
 
                                 <button class="btn btn-dark" type="submit">{{ trans("Delete") }}</button>
                             </form>
+
+                            @if($task->tracking()->first() === null)
+                                <form class="d-inline" action="{{ route("trackings.start", [$project, $task]) }}"
+                                      method="POST">
+                                    @method("POST")
+                                    @csrf
+
+                                    <button class="btn btn-dark" type="submit">{{ trans("Start") }}</button>
+                                </form>
+                            @else
+                                stop
+                            @endif
+
+
                         </td>
                     </tr>
                 @endforeach
