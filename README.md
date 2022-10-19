@@ -67,8 +67,8 @@ php artisan migrate
 - [ ] make status customisable
 - [ ] upload files to projects
 - [ ] add translations
-- [ ] start time tracking
-- [ ] end time tracking
+- [X] start time tracking
+- [X] end time tracking
 - [X] show open time tracking
 - [ ] sum of current week tracking
 - [ ] create offer
