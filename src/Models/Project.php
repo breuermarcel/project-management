@@ -31,4 +31,9 @@ class Project extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function tracking()
+    {
+        return $this->hasOneThrough(Tracking::class, Task::class);
+    }
 }

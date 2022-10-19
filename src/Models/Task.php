@@ -46,9 +46,9 @@ class Task extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function tracking()
+    public function trackings()
     {
-        return $this->hasOne(Tracking::class); // check if multiple people can track on one
+        return $this->hasMany(Tracking::class);
     }
 
     public function createdFrom()

@@ -41,7 +41,7 @@ Route::prefix("projects")->group(function () {
 
         Route::prefix("{task}/trackings")->group(function () {
             Route::post("/start", [TrackingController::class, "start"])->name("trackings.start");
-            Route::post("/end", [TrackingController::class, "end"])->name("trackings.end");
+            Route::patch("{tracking}/end", [TrackingController::class, "end"])->name("trackings.stop");
         });
     });
 

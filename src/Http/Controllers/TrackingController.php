@@ -11,27 +11,38 @@ class TrackingController extends Controller
 {
     public function start(Project $project, Task $task)
     {
-        if ($task->tracking()->first() !== null) {
-            return redirect(route("projects.show", [$project, $task]))->withError(trans("Tracking already started."));
-        }
-
         $data["task_id"] = $task->id;
         $data["user_id"] = auth()->user()->id;
 
-        // check if already started
+        $latestTracking = $task->trackings()->where("user_id", auth()->user()->id)->latest()->first();
 
-        Tracking::create($data);
+        if ($latestTracking !== null) {
+            if ($latestTracking->ended_at === null) {
+                // exists but not ended yet
+                return redirect(route("projects.show", [$project, $task]))->withError(trans("Tracking already started."));
+            } else {
+                // exists but new tracking
+                Tracking::create($data);
 
-        return redirect(route("projects.show", [$project, $task]))->withSuccess(trans("Tracking started."));
+                return redirect(route("projects.show", [$project, $task]))->withSuccess(trans("Tracking started."));
+            }
+
+        } else {
+            // first tracking
+            Tracking::create($data);
+
+            return redirect(route("projects.show", [$project, $task]))->withSuccess(trans("First tracking started."));
+        }
     }
 
-    public function end(Project $project, Task $task)
+    public function end(Project $project, Task $task, Tracking $tracking)
     {
-        $data["task_id"] = $task->id;
-        $data["user_id"] = auth()->user()->id;
-        $data["ended_at"] = Carbon::now()->timestamp;
+        if ($tracking->user_id !== auth()->user()->id) {
+            return redirect(route("projects.show", [$project, $task]))->withError(trans("Tracking can not be stopped."));
+        }
 
-        Tracking::create($data);
+        $tracking->ended_at = Carbon::now()->timestamp;
+        $tracking->update();
 
         return redirect(route("projects.show", [$project, $task]))->withSuccess(trans("Tracking stopped."));
     }

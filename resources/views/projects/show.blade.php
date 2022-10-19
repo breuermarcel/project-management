@@ -60,7 +60,16 @@
                                 <button class="btn btn-dark" type="submit">{{ trans("Delete") }}</button>
                             </form>
 
-                            @if($task->tracking()->first() === null)
+                            @if($task->trackings()->where("user_id", auth()->user()->id)->latest()->first() && $task->trackings()->where("user_id", auth()->user()->id)->latest()->first()->ended_at === null)
+                                <form class="d-inline"
+                                      action="{{ route("trackings.stop", [$project, $task, $task->trackings()->where("user_id", auth()->user()->id)->latest()->first()]) }}"
+                                      method="POST">
+                                    @method("PATCH")
+                                    @csrf
+
+                                    <button class="btn btn-dark" type="submit">{{ trans("Stop") }}</button>
+                                </form>
+                            @else
                                 <form class="d-inline" action="{{ route("trackings.start", [$project, $task]) }}"
                                       method="POST">
                                     @method("POST")
@@ -68,8 +77,6 @@
 
                                     <button class="btn btn-dark" type="submit">{{ trans("Start") }}</button>
                                 </form>
-                            @else
-                                stop
                             @endif
 
 
