@@ -62,4 +62,12 @@ class Task extends Model
     {
         return $this->statuses[$key];
     }
+
+    public static function openTasks()
+    {
+        return self::where("signed_user_id", "=", auth()->user()->id)
+            ->where("status", "!=", 3) // completed
+            ->where("status", "!=", 4) // rejected
+            ->get();
+    }
 }
