@@ -18,7 +18,7 @@ class CustomerController extends Controller
 
     public function create()
     {
-        $customer = Customer::first();
+        $customer = new Customer();
 
         return view("project-management::customer.create", compact("customer"));
     }

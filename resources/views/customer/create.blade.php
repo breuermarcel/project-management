@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+
     <form class="row g-2" method="POST" action="{{ route("customers.store") }}">
         @method("POST")
         @csrf
