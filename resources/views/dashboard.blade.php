@@ -33,6 +33,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{{ trans("KPI's")}}:</h2>
+                </div>
+
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
