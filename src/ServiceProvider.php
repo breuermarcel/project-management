@@ -3,9 +3,9 @@
 namespace Breuermarcel\ProjectManagement;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
-class ProjectManagementServiceProvider extends ServiceProvider
+class ServiceProvider extends IlluminateServiceProvider
 {
     /**
      * Bootstrap the application services.

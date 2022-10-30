@@ -1,6 +1,10 @@
 {
     "name": "breuermarcel/project-management",
     "description": "",
+    "keywords": [
+        "breuermarcel",
+        "project-management"
+    ],
     "license": "MIT",
     "homepage": "https://github.com/breuermarcel/project-management",
     "type": "library",
@@ -11,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/ui": "^4.0"
@@ -21,20 +25,16 @@
             "Breuermarcel\\ProjectManagement\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-        }
-    },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Breuermarcel\\ProjectManagement\\ProjectManagementServiceProvider"
+                "Breuermarcel\\ProjectManagement\\ServiceProvider"
             ],
             "aliases": {
-                "ProjectManagement": "Breuermarcel\\ProjectManagement\\ProjectManagementFacade"
+                "ProjectManagement": "Breuermarcel\\ProjectManagement\\Facade"
             }
         }
     }

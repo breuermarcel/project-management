@@ -45,11 +45,6 @@ Require package:
 composer require breuermarcel/project-management
 ```
 
-Publish assets:
-```bash
-php artisan vendor:publish --provider="Breuermarcel\ProjectManagement\ProjectManagementServiceProvider" --tag="assets"
-```
-
 Migrate database:
 ```bash
 php artisan migrate
